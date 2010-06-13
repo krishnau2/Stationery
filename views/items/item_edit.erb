@@ -1,0 +1,54 @@
+
+<script type="text/javascript" src="/js/local/category_change.js" > </script>
+<script type="text/javascript" src="/js/jquery/jquery.numeric.js" > </script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("select.category").change(function() {
+      update_subcategories($("select.category :selected").text(), $(document));
+    });
+    $("input.numeric").numeric();
+  });
+</script>
+
+<div>
+
+  <form action="/items/save" method="post">
+
+    <%unless @item_id.blank?%>
+      <h2>Edit Item</h2>
+      <input type="hidden" name="item_id" value="<%=@item_id%>" />
+    <%else%>
+      <h2>Create New Item</h2>
+    <%end%>
+
+    <table class="data_input">
+      <tr>
+        <td>Category: </td>
+        <td><%= select_category_partial @category%> </td>
+
+      </tr>
+
+      <tr>
+        <td>Subcategory: </td>
+        <td>
+          <select id="subcategory" class="subcategory" name="subcategory">
+            <option></option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Description: </td>
+        <td><input type="text" size="15" name="description" value="<%=@description%>"/> </td>
+      </tr>
+      <tr>
+        <td>Reorder Level: </td>
+        <td><input type="text" size="2" name="reorder" class="numeric" value="<%=@reorder%>"/> </td>
+      </tr>
+
+    </table>
+    <br />
+    <button type="submit">Save</button>
+  </form>
+</div>
+

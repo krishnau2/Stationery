@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+
+    <script type="text/javascript" src='/js/jquery/jquery-1.4.2.min.js'> </script>
+    <script type="text/javascript" src='/js/jquery/jquery-ui-1.8rc3.custom.min.js'> </script>
+    <script type="text/javascript" src='/js/jquery/jquery.autocomplete.js'> </script>
+
+    <link type="text/css" href='/js/jquery/jquery.autocomplete.css' rel="stylesheet"/>
+    <link type="text/css" href='/js/jquery/dark-hive/jquery-ui-1.8rc3.custom.css' rel="stylesheet"/>
+
+    <script type="text/javascript" src='/js/jquery/pulldown_menu.js'> </script>
+    <link type="text/css" href='/css/pulldown_menu.css' rel="stylesheet"/>
+
+    <script type="text/javascript" src='/js/jquery/jquery.tablesorter.js'> </script>
+    <link type="text/css" href='/css/tablesorter/style.css' rel="stylesheet"/>
+
+    <link type="text/css" href='/css/main.css' rel="stylesheet"/>
+
+    <script type="text/javascript">
+      /* Registering responders for jQuery AJAX calls. */
+      jQuery("#ajax_loader").ajaxStart(function() {
+        jQuery(this).show();
+      });
+      jQuery("#ajax_loader").ajaxStop(function() {
+        jQuery(this).hide();
+      });
+
+      $(document).ready(function() {
+        $("table.tablesorter").tablesorter();
+      })
+    </script>
+  </head>
+  <body>
+    <div class="banner">
+      <h1> Stationery System </h1>
+    </div>
+    <ul id="pulldown_menu">
+      <li><a href="#">Items Master</a>
+        <ul>          
+          <li><a href="/items/new">New</a></li>
+          <li><a href="/items/list">List</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Category</a>
+        <ul>
+          <li><a href="/category/new">New</a></li>
+          <li><a href="/category/list">List</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Purchase</a>
+        <ul>
+          <li><a href="/purchase/new">New</a></li>
+          <li><a href="/purchase/list">List</a></li>
+          <li><a href="/purchase/report">Report</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Consumption</a>
+        <ul>
+          <li><a href="/consumption/new">New</a></li>
+          <li><a href="/consumption/list">List</a></li>
+          <li><a href="/consumption/report">Report</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Suppliers</a>
+        <ul>
+          <li><a href="/suppliers/new">New</a></li>
+          <li><a href="/suppliers/list">List</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Customers</a>
+        <ul>
+          <li><a href="/customers/new">New</a></li>
+          <li><a href="/customers/list">List</a></li>
+        </ul>
+      </li>
+    </ul>
+    <span style="float: right;margin-right: 10px;"><%= Date.today.strftime("%A") %>  <%=Date.today.strftime("%d/%m/%Y") %></span>
+    <div class="clear"> </div>
+
+    <div class="mainWrapper">
+      <%unless flash[:error].blank? %>
+        <div class="flash_error"><%=flash[:error]%></div>
+      <%end%>
+      <%unless flash[:message].blank? %>
+        <div class="flash_message"><%=flash[:message]%></div>
+      <%end%>
+
+      <img src="/images/ajax-loader.gif" id="ajax_loader" alt="Loading.." style="display: none;"></img>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>
