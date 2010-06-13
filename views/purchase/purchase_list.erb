@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% Purchase.find(:all, :order => "bill_date").each {|bill| %>
+    <% Purchase.find(:all, :order => "bill_date desc, id desc").each {|bill| %>
       <tr>
         <td><%=bill.bill_date%></td>
         <td><%=bill.supplier.name%></td>

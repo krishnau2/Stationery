@@ -14,13 +14,7 @@ post '/purchase/new' do
   de_date=params.delete "deDate"
   bill_date=params.delete "billDate"
 
-  p=Purchase.new
-  p.bill_date = bill_date
-  p.bill_no = bill_no
-  p.gr_date = gr_date
-  p.de_date = Date.today
-  p.supplier_id = Supplier.find_by_name(supplier_name).id  
-  p.save
+  item_details_exist=false
 
   data=create_hash_from_html_post params  # discards the keyname "row1" "row2" etc. Gets the actual value in each row.
   data.each {|keyname, row|
@@ -28,7 +22,7 @@ post '/purchase/new' do
 
     x=Item.find(:all, :conditions => {:category => row["category"], :subcategory => row["subcategory"],
         :description => row["itemName"]}).first
-    
+
     next if x.nil?
 
     pd=PurchaseDetail.new
@@ -38,5 +32,17 @@ post '/purchase/new' do
     pd.rate = row["rate"].to_f
     pd.amount = pd.quantity * pd.rate
     pd.save
+    item_details_exist=true
   }
+
+  if item_details_exist
+    p=Purchase.new
+    p.bill_date = bill_date
+    p.bill_no = bill_no
+    p.gr_date = gr_date
+    p.de_date = Date.today
+    p.supplier_id = Supplier.find_by_name(supplier_name).id
+    p.save
+  end
+  redirect '/purchase/list'
 end
