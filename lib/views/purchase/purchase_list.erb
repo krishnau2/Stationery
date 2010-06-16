@@ -1,0 +1,31 @@
+<h2>Purchase List</h2>
+
+<table class="tablesorter" style='width: 900px;'>
+  <thead>
+    <tr>
+      <th>Bill Date</th>
+      <th>Supplier</th>
+      <th>Bill No.</th>
+      <th>Total Amount</th>
+      <th>Entry Date</th>
+      <th>Goods Received Date</th>
+      <td></td>
+      <td></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Purchase.find(:all, :order => "bill_date desc, id desc").each {|bill| %>
+      <tr>
+        <td><%=bill.bill_date%></td>
+        <td><%=bill.supplier.name%></td>
+        <td><%=bill.bill_no%></td>
+        <td><%=bill.total_amount%></td>
+        <td><%=bill.de_date%></td>
+        <td><%=bill.gr_date%></td>
+        <td><a href="view/<%=bill.id%>">Edit</a></td>
+        <td><a href="/purchase/purchase_detail">Details</a> </td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>

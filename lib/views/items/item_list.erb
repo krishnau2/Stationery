@@ -1,0 +1,25 @@
+  <h2>Items List</h2>
+
+<table class="tablesorter" style='width: 1000px;'>
+  <thead>
+    <tr>
+      <th>Item Name</th>
+      <th>Category</th>
+      <th>Sub Category</th>
+      <th>Reorder Level</th>
+      <td></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Item.all.each {|item| %>
+      <tr>
+        <td><%=item.description%></td>
+        <td><%=item.category%></td>
+        <td><%=item.subcategory%></td>
+        <td><%=item.reorder_level%></td>
+        <td><a href="edit/<%=item.id%>">Edit</a></td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>

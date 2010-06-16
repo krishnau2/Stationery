@@ -1,0 +1,22 @@
+<form action="/suppliers/save" method="post">
+  <%unless @supplier_id.blank?%>
+    <h2>Edit Supplier</h2>
+    <input type="hidden" name="supplier_id" value="<%=@supplier_id%>"/>
+  <%else%>
+    <h2>Create New Supplier</h2>
+  <%end%>
+  <table class="data_input">
+    <tbody>
+      <tr>
+        <td>Name :</td>
+        <td><input type="text" name="supplierName" id="supplierName" value="<%=@name%>" /> </td>
+      </tr>
+      <tr>
+        <td>Address :</td>
+        <td><input type="text" name="supplierAddress" id="supplierAddress" value="<%=@address%>"/> </td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+  <button type="submit">Save</button>
+</form>
