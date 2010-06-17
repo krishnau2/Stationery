@@ -16,6 +16,7 @@ class Purchase < ActiveRecord::Base
 end
 
 class PurchaseDetail < ActiveRecord::Base
+  belongs_to :item
   has_one :purchase
 end
 

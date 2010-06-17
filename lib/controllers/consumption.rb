@@ -5,3 +5,7 @@ end
 get '/consumption/list' do
   erb :"consumption/consumption_list"
 end
+
+post '/consumption/new' do
+  
+end

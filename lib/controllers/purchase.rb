@@ -6,6 +6,11 @@ get '/purchase/list' do
   erb :"purchase/purchase_list"
 end
 
+get '/purchase/detail/:purchase_id' do
+  @purchase_id = params[:purchase_id].to_i
+  erb :"purchase/purchase_detail"
+end
+
 post '/purchase/new' do
   params.delete "category"
   supplier_name = params.delete "supplierName"
@@ -16,9 +21,11 @@ post '/purchase/new' do
   bill_date=params.delete "billDate"
 
   item_details_exist=false
+  purchase_entry_saved=false
 
   unless params[:row1_itemName].blank?
     item_details_exist=true
+    purchase_entry_saved=true
   end
 
   if item_details_exist
@@ -50,6 +57,9 @@ post '/purchase/new' do
     pd.save
     item_details_exist=true
   }
-
-  redirect '/purchase/list'
+  if purchase_entry_saved
+    redirect '/purchase/list'
+  else
+    redirect '/purchase/new'
+  end
 end

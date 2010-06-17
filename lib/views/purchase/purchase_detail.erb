@@ -10,9 +10,9 @@
     </tr>
   </thead>
   <tbody>
-    <% PurchaseDetail.all.each { |details| %>
+    <% PurchaseDetail.find(:all, :conditions => {:purchase_id => @purchase_id}).each { |details| %>
     <tr>
-      <td><%=details.Item.description %></td>
+      <td><%=details.item.description %></td>
       <td><%=details.quantity %> </td>
       <td><%=details.rate %></td>
       <td><%=details.amount %> </td>
