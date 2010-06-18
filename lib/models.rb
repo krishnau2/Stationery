@@ -10,14 +10,15 @@ end
 class Purchase < ActiveRecord::Base
   belongs_to :supplier
   has_many :purchase_details
-#  def total_amount
-#    PurchaseDetail.find(:all, :conditions => {:purchase_id => id})
-#  end
 end
 
 class PurchaseDetail < ActiveRecord::Base
   belongs_to :item
   has_one :purchase
+end
+
+class Consumption < ActiveRecord::Base
+  belongs_to :item
 end
 
 class Category < ActiveRecord::Base
