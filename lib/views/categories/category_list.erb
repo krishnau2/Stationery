@@ -5,14 +5,16 @@
       <th>Category</th>
       <th>Subcategory</th>
       <td></td>
+      <td></td>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="test">
     <% Category.all.each { |category_records| %>
     <tr>
       <td><%=category_records.category%></td>
       <td><%=category_records.subcategory%> </td>
       <td><a href="edit/<%=category_records.id%>">Edit</a></td>
+      <td></td>
     </tr>
     <% } %>
   </tbody>

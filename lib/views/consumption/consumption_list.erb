@@ -9,19 +9,21 @@
       <th>For Unit</th>
       <th>User</th>
       <td></td>
+      <td></td>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="test">
     <% Consumption.find(:all, :order => "consume_date desc, id desc").each {|consumption| %>
       <tr>
-        <td><%=consumption.consume_date%></td>
+        <td width="100"><%=consumption.consume_date%></td>
         <%  x=Item.find(:all,:conditions => {:id => consumption.product_id}).first  %>
           <td><%=x.description%></td>
           <td><%=consumption.quantity%></td>
           <td><%=consumption.for_unit%></td>
           <td><%=consumption.user%></td>
           <td><a href="view/<%=consumption.id%>">Edit</a></td>
+          <td></td>
         </tr>
       <% } %>
     </tbody>

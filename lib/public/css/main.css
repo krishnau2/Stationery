@@ -13,7 +13,11 @@ div.mainWrapper{
     padding: 4px;
     color: black;
 }
-
+.test{
+    height: 400px;
+    overflow: auto;
+    overflow-x: hidden;
+}
 div.flash_message {
     color: #802010;
     font-weight: bold;
