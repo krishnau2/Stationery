@@ -13,15 +13,7 @@
     </tr>
     <tr>
       <td><input type="text" name="consumeDate" id="consumeDate" size="10"/> </td>
-      <td><select id="forUnit" name="forUnit">
-          <optgroup label="Select a Unit"></optgroup>
-          <option></option>
-          <% Unit.all.each {|unit| %>
-            <option> <%=unit.name%> </option>
-          <%  } %>
-        </select>
-      </td>
-<%#*<td><input type="text" name="forUnit" id="forUnit" size="10"/> </td>%>
+      <td><input type="text" name="forUnit" id="forUnit" size="10"/> </td>
       <td><input type="text" name="user" id="user" size="10"/> </td>
     </tr>
   </table>

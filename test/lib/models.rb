@@ -24,13 +24,6 @@ end
 class Category < ActiveRecord::Base
 end
 
-class Unit < ActiveRecord::Base
-end
-
 def category_names_list
   Category.find_by_sql("select distinct category from categories")
-end
-
-def unit_name_list
-  Unit.find_by_sql("select distinct name from units")
 end

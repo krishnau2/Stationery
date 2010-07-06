@@ -1,0 +1,18 @@
+<form action="/units/save" method="post">
+  <%unless @unit_id.blank?  %>
+    <h2>Edit Unit</h2>
+    <input type="hidden" name="unit_id" value="<%=@unit_id%>"/>
+  <%else%>
+    <h2>Create New Unit</h2>
+  <%end%>
+  <table class="data_input">
+    <tbody>
+      <tr>
+        <td>Name :</td>
+        <td><input type="text" name="unitName" id="unitName" value="<%=@name%>" /> </td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+  <button type="submit">Save</button>
+</form>

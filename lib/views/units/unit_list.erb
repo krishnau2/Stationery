@@ -1,0 +1,19 @@
+<h2>Unit List</h2>
+<table class="tablesorter" style='width: 400px;'>
+  <thead>
+    <tr>
+      <th>Sl</th>
+      <th>Name</th>
+      <td width="20" ></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% Unit.all.each { |unit| %>
+    <tr>
+      <td><%=unit.id%></td>
+      <td><%=unit.name%> </td>
+      <td><a href="edit/<%=unit.id%>">Edit</a></td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>

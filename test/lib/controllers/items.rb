@@ -16,8 +16,6 @@ get '/items/edit/:item_id' do
   @category = i.category
   @subcategory = i.subcategory
   @reorder = i.reorder_level
-  @size = i.size
-  @part = i.part
   erb :"items/item_edit"
 end
 
@@ -37,8 +35,6 @@ post '/items/save' do
   i.category = params[:category]
   i.subcategory = params[:subcategory]
   i.reorder_level = params[:reorder]
-  i.size = params[:size]
-  i.part = params[:part]
   i.save
 
   flash_message "Item details saved."

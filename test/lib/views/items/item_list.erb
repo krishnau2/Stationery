@@ -1,32 +1,24 @@
-<h2>Items List</h2>
+  <h2>Items List</h2>
 
 <table class="tablesorter" style='width: 1000px;'>
   <thead>
     <tr>
-      <th width="30">SL </th>
       <th>Item Name</th>
       <th>Category</th>
       <th>Sub Category</th>
       <th>Reorder Level</th>
-      <th width="40" >Size</th>
-      <th width="40" >Part</th>
-      <td width="30"></td>
-      <td width="15"></td>
+      <td></td>
     </tr>
   </thead>
 
-  <tbody class="test">
+  <tbody>
     <% Item.all.each {|item| %>
       <tr>
-        <td><%=item.id%></td>
         <td><%=item.description%></td>
         <td><%=item.category%></td>
         <td><%=item.subcategory%></td>
         <td><%=item.reorder_level%></td>
-        <td><%=item.size%> </td>
-        <td><%=item.part%> </td>
         <td><a href="edit/<%=item.id%>">Edit</a></td>
-        <td></td>
       </tr>
     <% } %>
   </tbody>
