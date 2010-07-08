@@ -10,4 +10,11 @@ input.quantity{
 input.rate{
     text-align: right;
 }
-
+div.available_stock{
+    height: 20px;
+    width: 200px;
+    background-color: #eb9f9f;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 4px;
+}
