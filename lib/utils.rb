@@ -48,3 +48,15 @@ def create_hash_from_html_post (params, delimiter = "_")
   hashOutput.freeze #has some special properties - manipulating it gives u wrong results. freeze it for the unwary.
   return hashOutput
 end
+
+def calculate_available_stock(item_id)
+  total_purchase_qty_of_selected_item(item_id) - total_consumption_qty_of_selected_item(item_id)
+end
+
+def total_purchase_qty_of_selected_item(item_id)
+  PurchaseDetail.sum(:quantity, :conditions =>{:item_id =>item_id})
+end
+
+def total_consumption_qty_of_selected_item(item_id)
+  Consumption.sum(:quantity, :conditions =>{:product_id =>item_id})
+end

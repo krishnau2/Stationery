@@ -6,6 +6,10 @@ get '/items/new' do
   erb :"items/item_edit"
 end
 
+get '/items/report' do
+  erb :"items/item_report"
+end
+
 get '/items/edit/:item_id' do
 
   @item_id=params[:item_id].to_i

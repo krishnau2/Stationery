@@ -83,14 +83,16 @@ post '/consumption/get_available_stock' do
   available_stock_qty_of_selected_item.to_json
 end
 
-def calculate_available_stock(item_id)
-  total_purchase_qty_of_selected_item(item_id) - total_consumption_qty_of_selected_item(item_id)
-end
+# MOVED TO UTILS.RB FILE on 10/07/2010 to make it gloabal.
 
-def total_purchase_qty_of_selected_item(item_id)
-  PurchaseDetail.sum(:quantity, :conditions =>{:item_id =>item_id})
-end
-
-def total_consumption_qty_of_selected_item(item_id)
-  Consumption.sum(:quantity, :conditions =>{:product_id =>item_id})
-end
+#def calculate_available_stock(item_id)
+#  total_purchase_qty_of_selected_item(item_id) - total_consumption_qty_of_selected_item(item_id)
+#end
+#
+#def total_purchase_qty_of_selected_item(item_id)
+#  PurchaseDetail.sum(:quantity, :conditions =>{:item_id =>item_id})
+#end
+#
+#def total_consumption_qty_of_selected_item(item_id)
+#  Consumption.sum(:quantity, :conditions =>{:product_id =>item_id})
+#end
