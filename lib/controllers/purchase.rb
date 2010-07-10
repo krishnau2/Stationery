@@ -16,8 +16,9 @@ post '/purchase/new' do
   supplier_name = params.delete "supplierName"
   bill_no=params.delete "billNo"
   gr_date=params.delete "grDate"
-  total_amount=params.delete "total" 
-  de_date=params.delete "deDate"
+  total_amount=params.delete "total"
+#  current date is used as the dedate
+#  de_date=params.delete "deDate"
   bill_date=params.delete "billDate"
 
   item_details_exist=false

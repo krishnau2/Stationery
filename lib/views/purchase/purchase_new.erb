@@ -1,5 +1,6 @@
 <script type="text/javascript" src="/js/local/purchase.js" > </script>
 <script type="text/javascript" src="/js/local/category_change.js" > </script>
+<script type="text/javascript" src="/js/jquery/jquery.numeric.js" > </script>
 <link type="text/css" href='/css/purchase.css' rel="stylesheet"/>
 
 <h2>New Purchase</h2>
@@ -11,7 +12,7 @@
       <td>Bill NO</td>
       <td>Suppliers</td>
       <td>G R Date</td>
-      <td>D E Date</td>
+      <%#*<td>D E Date</td>%>
     </tr>
     <tr>
       <td><input type="text" name="billDate" id="billDate" size="10" /> </td>
@@ -24,7 +25,8 @@
           <%  } %>
         </select></td>
       <td><input type="text" name="grDate" id="grDate" size="10" /> </td>
-      <td><input type="text" name="deDate" id="deDate" size="10" /> </td>
+      <%#*removed because current date is used as dedate%>
+      <%#*<td><input type="text" name="deDate" id="deDate" size="10" /> </td>%>
     </tr>
   </table>
   <hr />
@@ -59,7 +61,7 @@
   </table>
   <table id="submit_and_total">
     <tr>
-      <td colspan="2"><input type="submit" id="submit" value="Save Bill" size="10" /> </td>
+      <td colspan="2"><input type="submit" id="savePurchase" value="Save Purchase" size="10" /> </td>
       <td></td>
       <td></td>
       <td></td>

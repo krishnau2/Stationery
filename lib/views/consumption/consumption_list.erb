@@ -13,7 +13,7 @@
     </tr>
   </thead>
 
-  <tbody class="test">
+  <tbody class="list_view">
     <% Consumption.find(:all, :order => "consume_date desc, id desc").each {|consumption| %>
       <tr>
         <td width="100"><%=consumption.consume_date%></td>
