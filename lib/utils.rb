@@ -60,3 +60,7 @@ end
 def total_consumption_qty_of_selected_item(item_id)
   Consumption.sum(:quantity, :conditions =>{:product_id =>item_id})
 end
+
+def last_purchase_price(item_id)
+  PurchaseDetail.find(:all, :conditions =>{:item_id =>item_id},:order => "purchase_id desc",:limit => 1).collect {|row| row["rate"]}
+end

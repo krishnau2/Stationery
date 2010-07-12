@@ -1,17 +1,20 @@
+<link type="text/css" href='/css/report.css' rel="stylesheet"/>
+
+
 <h2>Master Report</h2>
 
-<table class="tablesorter" style='width: 820px;'>
+<table class="report" style='width: 820px;'>
   <thead>
     <tr>
       <th width="30">Sl</th>
       <th>Category</th>
       <th>Subcategory</th>
       <th>Item Name</th>
-      <th width="40">Price</th>
+      <th >Last P.Price</th>
       <th width="40">Stock</th>
     </tr>
   </thead>
-<%sl=1%>
+  <%sl=1%>
   <tbody>
     <% Item.find(:all, :order => "category,subcategory,description").each {|item| %>
       <tr>
@@ -19,7 +22,7 @@
         <td><%=item.category%></td>
         <td><%=item.subcategory%></td>
         <td><%=item.description%></td>
-        <td align="right">0</td>
+        <td align="right"><%=last_purchase_price(item.id)%></td>
         <td align="right"><%=calculate_available_stock(item.id)%></td>
       </tr>
       <%sl=sl+1%>
