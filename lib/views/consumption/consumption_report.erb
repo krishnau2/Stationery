@@ -1,0 +1,45 @@
+<script type="text/javascript" src="/js/local/consumption.js" > </script>
+<script type="text/javascript" src="/js/jquery/jquery.numeric.js" > </script>
+<link type="text/css" href='/css/report.css' rel="stylesheet"/>
+
+<h2>Consumption Report</h2>
+<form action="/consumption/report" method="post">
+  <table class="data_input">
+    <tr>
+      <th>Starting Date</th><td><input type="text" name="start_date" id="start_date" size="10" /></td>
+      <th>Ending Date</th><td><input type="text" name="end_date" id="end_date"  size="10"/> </td>
+      <td><input type="submit" name="generate_report" id="generate_report" value="Generate Report" /> </td>
+    </tr>
+  </table>
+</form>
+<table class="report" style='width: 820px;'>
+  <thead>
+    <tr>
+      <th width="30">Sl</th>
+      <th>Date</th>
+      <th>Category</th>
+      <th>Subcategory</th>
+      <th>Item Name</th>
+      <th>For Unit</th>
+      <th>Quantity</th>
+      <th>User</th>
+    </tr>
+  </thead>
+  <%sl=1%>
+  <tbody>
+    <%@consumption.each { |consume|  %>
+      <tr>
+        <td><%=sl%></td>
+        <%  item=Item.find(:all,:conditions => {:id => consume.product_id}).first%>
+        <td><%=consume.consume_date%></td>
+        <td><%=item.category%></td>
+        <td><%=item.subcategory%></td>
+        <td><%=item.description%></td>
+        <td><%=consume.for_unit%></td>
+        <td><%=consume.quantity%></td>
+        <td><%=consume.user%> </td>
+      </tr>
+      <%sl=sl+1%>
+    <% } unless @consumption.nil? %>
+  </tbody>
+</table>

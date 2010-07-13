@@ -1,13 +1,13 @@
-<h2>Purchase Details</h2>
-<table class="tablesorter" style="width: 900px" >
+<h2>Bill Details</h2>
+<table class="tablesorter" style="width: 650px" >
   <thead>
     <tr>
-      <th>Bill Date</th>
+      <th width="70">Bill Date</th>
       <th>Supplier</th>
-      <th>Bill No.</th>
-      <th>Total Amount</th>
-      <th>Entry Date</th>
-      <th>Goods Received Date</th>
+      <th width="90">Bill No.</th>
+      <th width="70">Total Amount</th>
+      <th width="70">D E Date</th>
+      <th width="70">G R Date</th>
     </tr>
   </thead>
   <tbody>
@@ -16,32 +16,34 @@
         <td><%=purchase.bill_date%></td>
         <td><%=purchase.supplier.name%></td>
         <td><%=purchase.bill_no%></td>
-        <td><%=purchase.total_amount%></td>
+        <td align="right"><%=purchase.total_amount%></td>
         <td><%=purchase.de_date%></td>
         <td><%=purchase.gr_date%></td>
       </tr>
     <% } %>
   </tbody>
 </table>
-<h2>Bill Details</h2>
-<table class="tablesorter" style='width: 900px'>
+<h2>Bill Contents</h2>
+<table class="tablesorter" style='width: 800px'>
   <thead>
     <tr>
+      <th>Subcategory</th>
       <th>Item Name</th>
       <th>Quantity</th>
       <th>Rate</th>
       <th>Amount</th>
-      <td></td>
+      <td width="20"></td>
     </tr>
   </thead>
   <tbody>
     <% PurchaseDetail.find(:all, :conditions => {:purchase_id => @purchase_id}).each { |details| %>
       <tr>
         <%  x=Item.find(:all,:conditions => {:id => details.item_id}).first  %>
+        <td><%=x.subcategory%></td>
         <td><%=x.description%></td>
-        <td><%=details.quantity %> </td>
-        <td><%=details.rate %></td>
-        <td><%=details.amount %> </td>
+        <td align="right"><%=details.quantity %> </td>
+        <td align="right"><%=details.rate %></td>
+        <td align="right"><%=details.amount %> </td>
         <td><a href="edit/<%=details.id%>">Edit</a></td>
       </tr>
     <% } %>

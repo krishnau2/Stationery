@@ -1,6 +1,5 @@
 <link type="text/css" href='/css/report.css' rel="stylesheet"/>
 
-
 <h2>Master Report</h2>
 
 <table class="report" style='width: 820px;'>
@@ -18,7 +17,7 @@
   <tbody>
     <% Item.find(:all, :order => "category,subcategory,description").each {|item| %>
       <tr>
-        <td align="right"><%=sl%></td>
+        <td><%=sl%></td>
         <td><%=item.category%></td>
         <td><%=item.subcategory%></td>
         <td><%=item.description%></td>

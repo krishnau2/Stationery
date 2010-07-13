@@ -6,6 +6,19 @@ get '/consumption/list' do
   erb :"consumption/consumption_list"
 end
 
+get '/consumption/report' do
+  erb :"consumption/consumption_report"
+end
+
+post '/consumption/report' do
+  start_date = params.delete "start_date"
+  end_date = params.delete "end_date"
+  
+  @consumption=Consumption.find(:all, :order => "consume_date",:conditions =>
+      {:consume_date =>start_date..end_date}) unless start_date.blank? or end_date.blank?
+  erb :"/consumption/consumption_report"
+end
+
 post '/consumption/new' do
   params.delete "category"
   consumeDate = params.delete "consumeDate"
@@ -33,7 +46,7 @@ post '/consumption/new' do
     end
   } # stock_available is false if any item dont have enough balance quantity.
   # Saving the consumption details to database.
-  if stock_available 
+  if stock_available
     data.each {|keyname, row|
       next if row["itemName"].nil?    # Skip it if it is a blank row.
 
@@ -42,7 +55,7 @@ post '/consumption/new' do
       else
         item_details_exist=false
       end
-# Getting the item details from the maste
+      # Getting the item details from the maste
       x=Item.find(:all, :conditions => {:category => row["category"], :subcategory => row["subcategory"],
           :description => row["itemName"]}).first
 
@@ -64,7 +77,7 @@ post '/consumption/new' do
   end
   redirect '/consumption/list'
   
-end
+end # End of new consumption
 
 
 # For calculating the available stock of the selected item. (AJAX request)
@@ -82,17 +95,3 @@ post '/consumption/get_available_stock' do
   #  converting it to JSON
   available_stock_qty_of_selected_item.to_json
 end
-
-# MOVED TO UTILS.RB FILE on 10/07/2010 to make it gloabal.
-
-#def calculate_available_stock(item_id)
-#  total_purchase_qty_of_selected_item(item_id) - total_consumption_qty_of_selected_item(item_id)
-#end
-#
-#def total_purchase_qty_of_selected_item(item_id)
-#  PurchaseDetail.sum(:quantity, :conditions =>{:item_id =>item_id})
-#end
-#
-#def total_consumption_qty_of_selected_item(item_id)
-#  Consumption.sum(:quantity, :conditions =>{:product_id =>item_id})
-#end
