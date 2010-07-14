@@ -41,4 +41,7 @@ table.report thead tr .headerSortDown {
 table.report thead tr .headerSortDown, table.report thead tr .headerSortUp {
     background-color: #8dbdd8;
 }
-
+.bill_details{
+    font-size: 8pt;
+    font-weight: bold;
+}

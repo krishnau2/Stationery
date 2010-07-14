@@ -13,6 +13,9 @@ end
 post '/consumption/report' do
   start_date = params.delete "start_date"
   end_date = params.delete "end_date"
+
+  @st_date=start_date
+  @en_date=end_date
   
   @consumption=Consumption.find(:all, :order => "consume_date",:conditions =>
       {:consume_date =>start_date..end_date}) unless start_date.blank? or end_date.blank?

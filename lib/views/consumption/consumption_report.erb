@@ -6,8 +6,8 @@
 <form action="/consumption/report" method="post">
   <table class="data_input">
     <tr>
-      <th>Starting Date</th><td><input type="text" name="start_date" id="start_date" size="10" /></td>
-      <th>Ending Date</th><td><input type="text" name="end_date" id="end_date"  size="10"/> </td>
+      <th>Starting Date</th><td><input type="text" name="start_date" id="start_date" size="10" value="<%=@st_date%>" /></td>
+      <th>Ending Date</th><td><input type="text" name="end_date" id="end_date"  size="10" value="<%=@en_date%>"/> </td>
       <td><input type="submit" name="generate_report" id="generate_report" value="Generate Report" /> </td>
     </tr>
   </table>

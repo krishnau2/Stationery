@@ -5,9 +5,9 @@
       <th width="70">Bill Date</th>
       <th>Supplier</th>
       <th width="90">Bill No.</th>
-      <th width="70">Total Amount</th>
-      <th width="70">D E Date</th>
       <th width="70">G R Date</th>
+      <th width="70">D E Date</th>
+      <th width="70">Total Amount</th>
     </tr>
   </thead>
   <tbody>
@@ -16,9 +16,9 @@
         <td><%=purchase.bill_date%></td>
         <td><%=purchase.supplier.name%></td>
         <td><%=purchase.bill_no%></td>
-        <td align="right"><%=purchase.total_amount%></td>
-        <td><%=purchase.de_date%></td>
         <td><%=purchase.gr_date%></td>
+        <td><%=purchase.de_date%></td>
+        <td align="right"><%=purchase.total_amount%></td>
       </tr>
     <% } %>
   </tbody>

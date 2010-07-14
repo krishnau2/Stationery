@@ -6,10 +6,27 @@ get '/purchase/list' do
   erb :"purchase/purchase_list"
 end
 
+get '/purchase/report' do
+  erb :"purchase/purchase_report"
+end
+
 get '/purchase/detail/:purchase_id' do
   @purchase_id = params[:purchase_id].to_i
   erb :"purchase/purchase_detail"
 end
+
+post '/purchase/report' do
+  start_date = params.delete "start_date"
+  end_date = params.delete "end_date"
+
+  @st_date=start_date
+  @en_date=end_date
+  
+  @selected_purchase=Purchase.find(:all, :order => "gr_date",:conditions =>
+      {:gr_date =>start_date..end_date}) unless start_date.blank? or end_date.blank?
+  erb :"/purchase/purchase_report"
+end
+
 
 post '/purchase/new' do
   params.delete "category"
@@ -17,8 +34,8 @@ post '/purchase/new' do
   bill_no=params.delete "billNo"
   gr_date=params.delete "grDate"
   total_amount=params.delete "total"
-#  current date is used as the dedate
-#  de_date=params.delete "deDate"
+  #  current date is used as the dedate
+  #  de_date=params.delete "deDate"
   bill_date=params.delete "billDate"
 
   item_details_exist=false
