@@ -1,0 +1,104 @@
+body{
+    font-family: arial;
+    font-size: 13px;
+    background:white;
+}
+.clear{
+    display: block;
+    clear: both;
+}
+#wrap{
+    width: 1000px;
+    margin: auto;
+    padding: 5px;
+    background-color:  #dce6ed;
+
+}
+.text{
+    padding: 10px;
+    color: white;
+    border: 1px solid #E6E1C8;
+    /*background: #F3DDA6;*/
+    background-color: #7190e1;
+}
+#navigation{
+    width: 220px;
+}
+#navigation ul{
+    list-style: none;
+}
+#navigation ul li{
+    height: 30px;
+    border-bottom: 1px dotted #ccc;
+}
+#navigation ul li a{
+    text-indent: 20px;
+    padding: 5px 0;
+    display: block;
+    height: 20px;
+    text-decoration: none;
+    color: #434343;
+    background-image: url(bull.png);
+    background-repeat: no-repeat;
+    background-position: 5px 6px ;
+}
+#navigation ul li a:hover{
+    background-color: #7190e1;
+    background-image: url(bull.png);
+    background-repeat: no-repeat;
+    background-position: 15px 6px ;
+    color: white;
+}
+#footer{
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    text-align: center;
+}
+#footer img{
+    border: none;
+}
+
+table.report {
+    font-family:arial;
+    background-color: #CDCDCD;
+    margin:10px 0pt 10px;
+    font-size: 8pt;
+    width: 100%;
+    text-align: left;
+}
+table.report thead tr th, table.report tfoot tr th {
+    background-color: #e6EEEE;
+    border: 1px solid #FFF;
+    font-size: 8pt;
+    padding: 4px;
+}
+table.report thead tr .header {
+    /*background-image: url(bg.gif);*/
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+}
+table.report tbody td {
+    color: #3D3D3D;
+    padding: 4px;
+    background-color: #FFF;
+    vertical-align: top;
+}
+table.report tbody tr.odd td {
+    background-color:#35359c;
+}
+table.report thead tr .headerSortUp {
+    /*background-image: url(asc.gif);*/
+}
+table.report thead tr .headerSortDown {
+    /*background-image: url(desc.gif);*/
+}
+table.report thead tr .headerSortDown, table.report thead tr .headerSortUp {
+    background-color: #8dbdd8;
+}
+
+.list_view{
+    height: 360px;
+    overflow: auto;
+    overflow-x: hidden;
+}
