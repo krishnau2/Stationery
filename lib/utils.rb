@@ -64,3 +64,7 @@ end
 def last_purchase_price(item_id)
   PurchaseDetail.find(:all, :conditions =>{:item_id =>item_id},:order => "purchase_id desc",:limit => 1).collect {|row| row["rate"]}
 end
+
+def supplier_wise_bill_count(supplier_id,start_date,end_date)
+  Purchase.count(:conditions =>{:supplier_id =>supplier_id,:bill_date =>start_date..end_date})
+end

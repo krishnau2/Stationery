@@ -1,0 +1,108 @@
+<script type="text/javascript" src="/js/local/supplier.js" > </script>
+<script type="text/javascript" src="/js/jquery/jquery.numeric.js" > </script>
+<link type="text/css" href='/css/report.css' rel="stylesheet"/>
+
+<h2>Supplier wise report</h2>
+<form action="/suppliers/report" method="post">
+  <table class="data_input">
+    <tr>
+      <th>Supplier</th>
+      <th>Starting Date</th>
+      <th>Ending Date</th>
+    </tr>
+    <tr>
+      <td><select id="supplierName" name="supplierName">
+          <optgroup label="Select a Supplier"></optgroup>
+          <option></option>
+          <% Supplier.all.each {|supplier| %>
+            <option> <%=supplier.name%> </option>
+          <%  } %>
+        </select>
+      </td>
+      <td><input type="text" name="start_date" id="start_date" size="10" value="<%=@st_date%>" /></td>
+      <td><input type="text" name="end_date" id="end_date"  size="10" value="<%=@en_date%>"/> </td>
+      <td><input type="submit" name="generate_report" id="generate_report" value="Generate Report" /> </td>
+    </tr>
+  </table>
+</form>
+<table class="report" style="width: 700px" >
+  <thead>
+    <tr>
+      <%sl=1
+      flag=0
+      sup=0
+      sup_total=0
+      counter=0
+    %>
+      <th>Sl</th>
+      <th>Supplier</th>
+      <th width="70">G R Date</th>
+      <th width="90">Bill No.</th>
+      <th width="70">Bill Date</th>
+      <th width="70">D E Date</th>
+      <th width="70">Total Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @selected_purchase.each {|purchase| %>
+      <tr class="bill_details">
+        <td><%=sl%></td>
+        <td><%=purchase.supplier.name%></td>
+        <td><%=purchase.gr_date%></td>
+        <td><%=purchase.bill_no%></td>
+        <td><%=purchase.bill_date%></td>
+        <td><%=purchase.de_date%></td>
+        <td align="right"><%=purchase.total_amount.to_f%></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <th>Sl</th>
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Rate</th>
+        <th>Amount</th>
+      </tr>
+      <%bi=1%>
+      <% PurchaseDetail.find(:all, :conditions => {:purchase_id => purchase.id}).each { |details| %>
+        <tr>
+          <%  x=Item.find(:all,:conditions => {:id => details.item_id}).first  %>
+          <td></td>
+          <td></td>
+          <td><%=bi%></td>
+          <td><%=x.description%></td>
+          <td><%=details.quantity %> </td>
+          <td><%=details.rate %></td>
+          <td align="right"><%=details.amount %> </td>
+        </tr>
+        <% bi=bi+1  }%>
+      <%
+      if flag == 1
+        if counter != 0
+          sup_total=sup_total+purchase.total_amount
+          counter=counter-1
+        end
+      else
+        counter= supplier_wise_bill_count(purchase.supplier_id,@st_date,@en_date)
+        flag = 1
+        counter=counter-1
+        sup_total=purchase.total_amount
+      end
+    %>
+
+      <%  if counter == 0 %>
+        <tr>
+          <td colspan="7"><hr size="3" /></td>
+        </tr>
+        <tr>
+          <th colspan="7" align="right" >Total :- <%= sup_total %></th>
+        </tr>
+        <%flag=0 %>
+      <%end%>
+      <% sl=sl+1 %>
+      <tr>
+        <td colspan="7"><hr size="3" /></td>
+      </tr>
+    <% }unless @selected_purchase.nil? %>
+  </tbody>
+</table>
