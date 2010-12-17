@@ -22,7 +22,7 @@ body{
     background-color: #7190e1;
 }
 #navigation{
-    width: 250px;
+    width: 220px;
 }
 #navigation ul{
     list-style: none;

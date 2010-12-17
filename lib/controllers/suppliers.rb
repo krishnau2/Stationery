@@ -18,20 +18,22 @@ post '/suppliers/report' do
   @st_date=start_date
   @en_date=end_date
 
+  #  if supplier name is given then filters with supplier name , start date, end date.
+  #  Here the date field for filtering is the GR DATE.
   unless supplier == ""
     sup_id=Supplier.find(:all, :conditions =>{:name =>supplier })
     @selected_purchase=Purchase.find(:all, :order => "supplier_id",:conditions =>
         {:supplier_id =>sup_id ,:gr_date =>start_date..end_date}) unless start_date.blank? or end_date.blank?
     erb :"suppliers/supplier_report"
+    #    if supplier name is not selected then supplier wise report for all suppliers for the given date intervel is taken
   else
     @selected_purchase=Purchase.find(:all, :order => "supplier_id",:conditions =>
         {:gr_date =>start_date..end_date}) unless start_date.blank? or end_date.blank?
     erb :"suppliers/supplier_report"
   end
-  
 end
 
-get '/suppliers/edit/:supplier_id' do
+get '/suppliers/edit/:supplier_id' do # for editing a supplier information.
   @supplier_id = params[:supplier_id].to_i
   i= Supplier.find(@supplier_id) rescue nil
   redirect '/suppliers/list' if i.blank?
@@ -46,9 +48,9 @@ post '/suppliers/save' do
     flash_error "All values are required. Supplier not saved."
     redirect '/suppliers/new'
   end
-  if params[:supplier_id].nil?
+  if params[:supplier_id].nil? # If supplier id is not there then it is a new entry
     i=Supplier.new
-  else
+  else # if supplier id is there then this is an update operation for the existing supplier
     i=Supplier.find(params[:supplier_id].to_i)
   end
 

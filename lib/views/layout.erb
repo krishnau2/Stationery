@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-
+    <title>Stationery Management Application</title>
     <script type="text/javascript" src='/js/jquery/jquery-1.4.2.min.js'> </script>
     <script type="text/javascript" src='/js/jquery/jquery-ui-1.8rc3.custom.min.js'> </script>
     <script type="text/javascript" src='/js/jquery/jquery.autocomplete.js'> </script>
@@ -37,48 +37,48 @@
     </div>
     <ul id="pulldown_menu">
       <li><a href="/" >Home</a> </li>
-      <li><a href="#">Items Master</a>
+      <li><a href="/items/new">Items Master</a>
         <ul>          
           <li><a href="/items/new">New</a></li>
           <li><a href="/items/list">List</a></li>
           <li><a href="/items/report">Report</a> </li>
         </ul>
       </li>
-      <li><a href="#">Category</a>
+      <li><a href="/category/new">Category</a>
         <ul>
           <li><a href="/category/new">New</a></li>
           <li><a href="/category/list">List</a></li>
         </ul>
       </li>
-      <li><a href="#">Purchase</a>
+      <li><a href="/purchase/new">Purchase</a>
         <ul>
           <li><a href="/purchase/new">New</a></li>
           <li><a href="/purchase/list">List</a></li>
           <li><a href="/purchase/report">Report</a></li>
         </ul>
       </li>
-      <li><a href="#">Consumption</a>
+      <li><a href="/consumption/new">Consumption</a>
         <ul>
           <li><a href="/consumption/new">New</a></li>
           <li><a href="/consumption/list">List</a></li>
           <li><a href="/consumption/report">Report</a></li>
         </ul>
       </li>
-      <li><a href="#">Suppliers</a>
+      <li><a href="/suppliers/new">Suppliers</a>
         <ul>
           <li><a href="/suppliers/new">New</a></li>
           <li><a href="/suppliers/list">List</a></li>
           <li><a href="/suppliers/report">Report</a> </li>
         </ul>
       </li>
-      <li><a href="#">Units</a>
+      <li><a href="/units/new">Units</a>
         <ul>
           <li><a href="/units/new">New</a></li>
           <li><a href="/units/list">List</a></li>
         </ul>
       </li>
     </ul>
-    <span style="float: right;margin-right: 10px;"><%= Date.today.strftime("%A") %>  <%=Date.today.strftime("%d/%m/%Y") %></span>
+    <span style="float: right;margin-right: 10px; font-weight: bold"><%= Date.today.strftime("%A") %>  <%=Date.today.strftime("%d/%m/%Y") %></span>
     <div class="clear"> </div>
 
     <div class="mainWrapper">

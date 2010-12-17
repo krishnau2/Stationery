@@ -13,15 +13,15 @@ ActiveRecord::Base.establish_connection(
   :database => "rStationery"
 )
 
-require 'models.rb'
+require './models.rb'
 
-require 'utils.rb'
+require './utils.rb'
 
-require 'controllers/items.rb'
-require 'controllers/categories.rb'
-require 'controllers/purchase.rb'
-require 'controllers/categories.rb'
-require 'controllers/suppliers.rb'
-require 'controllers/consumption.rb'
-require 'controllers/units.rb'
-require 'controllers/home.rb'
+require './controllers/items.rb'
+require './controllers/categories.rb'
+require './controllers/purchase.rb'
+require './controllers/categories.rb'
+require './controllers/suppliers.rb'
+require './controllers/consumption.rb'
+require './controllers/units.rb'
+require './controllers/home.rb'

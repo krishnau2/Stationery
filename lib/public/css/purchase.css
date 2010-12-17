@@ -10,6 +10,15 @@ input.quantity{
 input.rate{
     text-align: right;
 }
+input.tax_amount{
+    text-align: right;
+}
+input.grand_total{
+    text-align: right;
+}
+input.cess_amount{
+    text-align: right;
+}
 div.available_stock{
     height: 20px;
     width: 200px;

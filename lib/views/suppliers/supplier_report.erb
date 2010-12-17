@@ -48,10 +48,10 @@
       <tr class="bill_details">
         <td><%=sl%></td>
         <td><%=purchase.supplier.name%></td>
-        <td><%=purchase.gr_date%></td>
+        <td><%=purchase.gr_date.strftime("%d/%m/%Y")%></td>
         <td><%=purchase.bill_no%></td>
-        <td><%=purchase.bill_date%></td>
-        <td><%=purchase.de_date%></td>
+        <td><%=purchase.bill_date.strftime("%d/%m/%Y")%></td>
+        <td><%=purchase.de_date.strftime("%d/%m/%Y")%></td>
         <td align="right"><%=purchase.total_amount.to_f%></td>
       </tr>
       <tr>

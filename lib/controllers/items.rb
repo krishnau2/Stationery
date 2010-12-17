@@ -10,7 +10,7 @@ get '/items/report' do
   erb :"items/item_report"
 end
 
-get '/items/edit/:item_id' do
+get '/items/edit/:item_id' do # for editing a Item entry
 
   @item_id=params[:item_id].to_i
   i=Item.find(@item_id) rescue nil

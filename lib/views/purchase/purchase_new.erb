@@ -12,7 +12,7 @@
       <td>Bill NO</td>
       <td>Suppliers</td>
       <td>G R Date</td>
-      <%#*<td>D E Date</td>%>
+<%#*<td>D E Date</td>%>
     </tr>
     <tr>
       <td><input type="text" name="billDate" id="billDate" size="10" /> </td>
@@ -25,23 +25,33 @@
           <%  } %>
         </select></td>
       <td><input type="text" name="grDate" id="grDate" size="10" /> </td>
-      <%#*removed because current date is used as dedate%>
-      <%#*<td><input type="text" name="deDate" id="deDate" size="10" /> </td>%>
+<%#*removed because current date is used as dedate%>
+<%#*<td><input type="text" name="deDate" id="deDate" size="10" /> </td>%>
     </tr>
   </table>
   <hr />
   <table id="purchase_details">
     <tr>
       <td>SL</td>
+      <td>Unit</td>
       <td>Category</td>
       <td>Subcategory</td>
       <td>Products</td>
       <td>Quantity</td>
       <td>Rate</td>
+      <td>Tax Amount</td>
       <td>Amount</td>
     </tr>
     <tr id="details_template" class ="details_template" style="display: none">
       <td><input type="text" class="sl" id="sl" size="1" maxlength="3" /></td>
+      <td><select id="forUnit" class="forUnit" name="forUnit">
+          <optgroup label="Select a Unit"></optgroup>
+          <option></option>
+          <% Unit.all.each {|unit| %>
+            <option> <%=unit.name%> </option>
+          <%  } %>
+        </select>
+      </td>
       <td>
         <%=select_category_partial ""%>
       </td>
@@ -56,17 +66,25 @@
       </td>
       <td><input type="text" class="quantity" id="quantity" size="10" /> </td>
       <td><input type="text" class="rate" id="rate" size="10" /> </td>
+      <td><input type="text" class="tax_amount" id="tax_amount" size="10" /> </td>
       <td><input type="text" class="amount" id="amount" size="10" /> </td>
     </tr>
   </table>
-  <table id="submit_and_total">
+
+  <input style="height: 45px; width: 160px; margin-top: 20px; margin-left: 5px;" type="submit" id="savePurchase" value="Save Purchase" size="10" />
+  
+  <table id="submit_and_total" style="margin-left: 100px; float: right">
     <tr>
-      <td colspan="2"><input type="submit" id="savePurchase" value="Save Purchase" size="10" /> </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Total</td>
+      <th>Total</th>
       <td><input type="text" id="total" class="total"  name="total" size="10" /> </td>
+    </tr>
+    <tr>
+      <th>CESS Amount</th>
+      <td><input type="text" id="cess_amount" class="cess_amount"  name="cess_amount" size="10" /></td>
+    </tr>
+    <tr>
+      <th>Grand Total</th>
+      <td><input type="text" id="grand_total" class="grand_total"  name="grand_total" size="10" /></td>
       <td><a href="#" id="edit_control">Unlock</a> </td>
     </tr>
   </table>

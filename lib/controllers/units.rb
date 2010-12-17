@@ -20,9 +20,9 @@ post '/units/save' do
     flash_error "All values are required. Unit not saved."
     redirect '/units/new'
   end
-  if params[:unit_id].nil?
+  if params[:unit_id].nil?# If unit id is not there then it is a new entry
     i=Unit.new
-  else
+  else # if unit id is there then this is an update operation for the existing unit
     i=Unit.find(params[:"unit_id"].to_i)
   end
 

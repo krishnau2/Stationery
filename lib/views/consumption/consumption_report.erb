@@ -31,7 +31,7 @@
       <tr>
         <td><%=sl%></td>
         <%  item=Item.find(:all,:conditions => {:id => consume.product_id}).first%>
-        <td><%=consume.consume_date%></td>
+        <td><%=consume.consume_date.strftime("%d/%m/%Y")%></td>
         <td><%=item.category%></td>
         <td><%=item.subcategory%></td>
         <td><%=item.description%></td>

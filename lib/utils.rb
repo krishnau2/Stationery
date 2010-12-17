@@ -49,7 +49,7 @@ def create_hash_from_html_post (params, delimiter = "_")
   return hashOutput
 end
 
-def calculate_available_stock(item_id)
+def calculate_available_stock(item_id) # for calculating available stock for the Item master report
   total_purchase_qty_of_selected_item(item_id) - total_consumption_qty_of_selected_item(item_id)
 end
 
@@ -61,10 +61,11 @@ def total_consumption_qty_of_selected_item(item_id)
   Consumption.sum(:quantity, :conditions =>{:product_id =>item_id})
 end
 
-def last_purchase_price(item_id)
+def last_purchase_price(item_id) # for finding the last purchase price of the given item for the Item master report
   PurchaseDetail.find(:all, :conditions =>{:item_id =>item_id},:order => "purchase_id desc",:limit => 1).collect {|row| row["rate"]}
 end
 
+# for the finding the no of bills of a supplier for a given period of time
 def supplier_wise_bill_count(supplier_id,start_date,end_date)
   Purchase.count(:conditions =>{:supplier_id =>supplier_id,:bill_date =>start_date..end_date})
 end

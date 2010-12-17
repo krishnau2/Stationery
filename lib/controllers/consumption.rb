@@ -65,11 +65,12 @@ post '/consumption/new' do
       next if x.nil?
 
       if item_details_exist
+        unit=Unit.find_by_name(forUnit).id
         consumption=Consumption.new
         consumption.product_id=x['id']
         consumption.quantity = row["quantity"].to_f
         consumption.consume_date = consumeDate
-        consumption.for_unit = forUnit
+        consumption.for_unit = unit
         consumption.user = user
         consumption.save
       end

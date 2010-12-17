@@ -7,9 +7,10 @@ get '/category/list' do
 end
 
 get '/category/edit/:category_id' do
-@category_id = params[:category_id].to_i
-i= Category.find(@category_id) rescue nil
-redirect '/category/list' if i.blank?
+  
+  @category_id = params[:category_id].to_i
+  i= Category.find(@category_id) rescue nil
+  redirect '/category/list' if i.blank?
 
   @category=i.category
   @subcategory=i.subcategory
@@ -22,20 +23,20 @@ post '/category/save' do
     redirect '/category/new'
   end
   if params[:category_id].nil?
-        i=Category.new
+    i=Category.new
   else
     i=Category.find(params[:category_id].to_i)
   end
 
-    i.category = params[:category]
-    i.subcategory = params[:subcategory]
-    i.save
+  i.category = params[:category]
+  i.subcategory = params[:subcategory]
+  i.save
 
-    flash_message "Category & Subcategory datails saved."
-    redirect '/category/list'
+  flash_message "Category & Subcategory datails saved."
+  redirect '/category/list'
 end
 
-post '/category/get_subcategories' do
+post '/category/get_subcategories' do # AJAX request for subcategories for the selected category
   params[:category].strip!
   Category.find(:all, :conditions => {:category => params[:category]}).collect {|row| row["subcategory"]}.to_json
 end

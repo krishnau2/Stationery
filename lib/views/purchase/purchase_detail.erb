@@ -7,17 +7,19 @@
       <th width="90">Bill No.</th>
       <th width="70">G R Date</th>
       <th width="70">D E Date</th>
+      <th width="70">CESS Amount</th>
       <th width="70">Total Amount</th>
     </tr>
   </thead>
   <tbody>
     <% Purchase.find(:all, :conditions => {:id =>@purchase_id}).each { |purchase| %>
       <tr>
-        <td><%=purchase.bill_date%></td>
+        <td><%=purchase.bill_date.strftime("%d/%m/%Y")%></td>
         <td><%=purchase.supplier.name%></td>
         <td><%=purchase.bill_no%></td>
-        <td><%=purchase.gr_date%></td>
-        <td><%=purchase.de_date%></td>
+        <td><%=purchase.gr_date.strftime("%d/%m/%Y")%></td>
+        <td><%=purchase.de_date.strftime("%d/%m/%Y")%></td>
+        <td align="right"><%=purchase.cess_amount%></td>
         <td align="right"><%=purchase.total_amount%></td>
       </tr>
     <% } %>
@@ -27,24 +29,29 @@
 <table class="tablesorter" style='width: 800px'>
   <thead>
     <tr>
+      <th>Unit</th>
       <th>Subcategory</th>
       <th>Item Name</th>
       <th>Quantity</th>
       <th>Rate</th>
+      <th>Tax Amount</th>
       <th>Amount</th>
-      <td width="20"></td>
+   <!--   <td width="20"></td>   -->
     </tr>
   </thead>
   <tbody>
     <% PurchaseDetail.find(:all, :conditions => {:purchase_id => @purchase_id}).each { |details| %>
       <tr>
+        <% unit = Unit.find(:all,:conditions => {:id => details.unit}).first %>
+        <td><%=unit.name %></td>
         <%  x=Item.find(:all,:conditions => {:id => details.item_id}).first  %>
         <td><%=x.subcategory%></td>
         <td><%=x.description%></td>
         <td align="right"><%=details.quantity %> </td>
         <td align="right"><%=details.rate %></td>
+        <td align="right"><%=details.tax_amount%> </td>
         <td align="right"><%=details.amount %> </td>
-        <td><a href="edit/<%=details.id%>">Edit</a></td>
+  <!--      <td><a href="edit/<%=details.id%>">Edit</a></td>    -->
       </tr>
     <% } %>
   </tbody>

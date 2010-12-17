@@ -1,8 +1,0 @@
-<select id="category" class="category" name="category">
-  <option></option>
-  <% category_names_list.each {|category| %>
-    <option <%= "selected" if @already_selected_category == category.category%> >
-      <%=category.category%>
-    </option>
-  <%  } %>
-</select>
