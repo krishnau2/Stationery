@@ -79,8 +79,9 @@ post '/purchase/new' do
     next if x.nil?
 
     unless row["quantity"].blank? || row["rate"].blank?
+      unit_id = Unit.find_by_name(row["forUnit"]).id
       pd=PurchaseDetail.new
-      pd.unit = Unit.find_by_name(row["forUnit"]).id
+      pd.unit = unit_id
       pd.purchase_id=p.id
       pd.item_id=x['id']
       pd.quantity = row["quantity"].to_f

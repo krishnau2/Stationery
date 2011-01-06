@@ -15,7 +15,9 @@
           <optgroup label="Select a Supplier"></optgroup>
           <option></option>
           <% Supplier.all.each {|supplier| %>
-            <option> <%=supplier.name%> </option>
+            <option <%= "selected" if @supplier == supplier.name %> >
+              <%=supplier.name%>
+            </option>
           <%  } %>
         </select>
       </td>

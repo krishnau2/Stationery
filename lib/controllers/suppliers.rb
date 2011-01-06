@@ -17,6 +17,7 @@ post '/suppliers/report' do
 
   @st_date=start_date
   @en_date=end_date
+  @supplier = supplier
 
   #  if supplier name is given then filters with supplier name , start date, end date.
   #  Here the date field for filtering is the GR DATE.
