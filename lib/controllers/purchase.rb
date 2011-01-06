@@ -54,8 +54,8 @@ post '/purchase/new' do
   end
   # If there is some item entry in the first row, then only the bill head details,
   # such as bill no, bill date, supplier name etc will be stored to the purchase database.
-  # If some one enters the bill details and accidently saves the purchase then it should not saved,
-  # unless if the first row is blank.
+  # If some one enters the bill details and accidently saves the purchase then it should not be saved,
+  # unless if the first row is filled.
   # item_details_exist is kept as false by default to prevent this.
   if item_details_exist && purchase_details_exist
     p=Purchase.new
