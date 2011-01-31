@@ -6,6 +6,7 @@
       <th>Supplier</th>
       <th width="90">Bill No.</th>
       <th width="70">G R Date</th>
+      <th width="50">D E By</th>
       <th width="70">D E Date</th>
       <th width="70">CESS Amount</th>
       <th width="70">Total Amount</th>
@@ -18,6 +19,7 @@
         <td><%=purchase.supplier.name%></td>
         <td><%=purchase.bill_no%></td>
         <td><%=purchase.gr_date.strftime("%d/%m/%Y")%></td>
+        <td><%=purchase.de_by %></td>
         <td><%=purchase.de_date.strftime("%d/%m/%Y")%></td>
         <td align="right"><%=purchase.cess_amount%></td>
         <td align="right"><%=purchase.total_amount%></td>
@@ -36,7 +38,7 @@
       <th>Rate</th>
       <th>Tax Amount</th>
       <th>Amount</th>
-   <!--   <td width="20"></td>   -->
+      <!--   <td width="20"></td>   -->
     </tr>
   </thead>
   <tbody>

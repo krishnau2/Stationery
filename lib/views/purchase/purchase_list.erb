@@ -7,6 +7,7 @@
       <th>Supplier</th>
       <th width="100">Bill No.</th>
       <th width="80">G R Date</th>
+      <th width="50">D E By</th>
       <th width="70">Entry Date</th>
       <th width="70">CESS Amount</th>
       <th width="90">Total Amount</th>
@@ -22,6 +23,7 @@
         <td><%=bill.supplier.name%></td>
         <td><%=bill.bill_no%></td>
         <td><%=bill.gr_date.strftime("%d/%m/%Y")%></td>
+        <td><%=bill.de_by %>  </td>
         <td><%=bill.de_date.strftime("%d/%m/%Y")%></td>
         <td align="right"><%=bill.cess_amount%></td>
         <td align="right"><%=bill.total_amount%></td>

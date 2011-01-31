@@ -19,8 +19,9 @@
       <th>Sl</th>
       <th width="70">G R Date</th>
       <th width="90">Bill No.</th>
-      <th>Supplier</th>
       <th width="70">Bill Date</th>
+      <th>Supplier</th>
+      <th width="40">D E By</th>
       <th width="70">D E Date</th>
       <th width="70">Total Amount</th>
     </tr>
@@ -31,12 +32,14 @@
         <td><%=sl%></td>
         <td><%=purchase.gr_date.strftime("%d/%m/%Y")%></td>
         <td><%=purchase.bill_no%></td>
-        <td><%=purchase.supplier.name%></td>
         <td><%=purchase.bill_date.strftime("%d/%m/%Y")%></td>
+        <td><%=purchase.supplier.name%></td>
+        <td><%=purchase.de_by %> </td>
         <td><%=purchase.de_date.strftime("%d/%m/%Y")%></td>
         <td align="right"><%=purchase.total_amount.to_f%></td>
       </tr>
       <tr>
+        <td></td>
         <td></td>
         <td></td>
         <th>Sl</th>
@@ -51,6 +54,7 @@
           <%  x=Item.find(:all,:conditions => {:id => details.item_id}).first  %>
           <td></td>
           <td></td>
+          <td></td>
           <td><%=bi%></td>
           <td><%=x.description%></td>
           <td><%=details.quantity %> </td>
@@ -60,7 +64,7 @@
         <% bi=bi+1  }%>
       <% sl=sl+1 %>
       <tr>
-        <td colspan="7"><hr size="3" /></td>
+        <td colspan="8"><hr size="3" /></td>
       </tr>
     <% }unless @selected_purchase.nil? %>
   </tbody>

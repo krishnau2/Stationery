@@ -34,6 +34,7 @@ post '/purchase/new' do
   supplier_name = params.delete "supplierName"
   bill_no=params.delete "billNo"
   gr_date=params.delete "grDate"
+  de_by = params.delete "deBy"
   cess_amount = params.delete "cess_amount"
   grand_total=params.delete "grand_total"
   #  current date is used as the dedate
@@ -44,7 +45,7 @@ post '/purchase/new' do
   item_details_exist=false
   purchase_entry_saved=false
 
-  purchase_details_exist = true unless bill_date.blank? || supplier_name.blank? || bill_no.blank? || gr_date.blank?
+  purchase_details_exist = true unless bill_date.blank? || supplier_name.blank? || bill_no.blank? || gr_date.blank? || de_by.blank?
 
   if purchase_details_exist
     unless params[:row1_itemName].blank?  # First row should not be left blank (explained below)
@@ -62,6 +63,7 @@ post '/purchase/new' do
     p.bill_date = bill_date
     p.bill_no = bill_no
     p.gr_date = gr_date
+    p.de_by = de_by
     p.cess_amount = cess_amount
     p.total_amount=grand_total
     p.de_date = Date.today
