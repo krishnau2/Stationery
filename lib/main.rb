@@ -1,27 +1,33 @@
 require 'rubygems'
-require 'sinatra'
-require 'rack-flash'
+#require 'sinatra'
+#require 'rack-flash'
 enable :sessions
 use Rack::Flash
 
 require 'active_record'
 ActiveRecord::Base.establish_connection(
   :adapter  => "mysql",
-  :host     => "localhost",
+  :host     => "127.0.0.1",
   :username => "root",
   :password => "",
   :database => "rStationery"
 )
 
-require './models.rb'
+set :views, File.dirname(__FILE__) + '/views'
+set :public, File.dirname(__FILE__) + '/public'
 
-require './utils.rb'
+root = File.expand_path(File.dirname(__FILE__))
 
-require './controllers/items.rb'
-require './controllers/categories.rb'
-require './controllers/purchase.rb'
-require './controllers/categories.rb'
-require './controllers/suppliers.rb'
-require './controllers/consumption.rb'
-require './controllers/units.rb'
-require './controllers/home.rb'
+require "#{root}/models.rb"
+#require './models.rb'
+
+require "#{root}/utils.rb"
+
+require "#{root}/controllers/items.rb"
+require "#{root}/controllers/categories.rb"
+require "#{root}/controllers/purchase.rb"
+require "#{root}/controllers/categories.rb"
+require "#{root}/controllers/suppliers.rb"
+require "#{root}/controllers/consumption.rb"
+require "#{root}/controllers/units.rb"
+require "#{root}/controllers/home.rb"
