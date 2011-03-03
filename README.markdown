@@ -38,3 +38,8 @@ Running - From the project directory
 <code>rackup</code> *The application will start in localhost:9292*
 
 In browser:- <http://localhost:9292>
+
+###Screen shot 
+
+![Alt text](https://github.com/krishnau2/Stationery/blob/master/screenshot/Screenshot-1.jpg )
+
