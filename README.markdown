@@ -41,5 +41,5 @@ In browser:- <http://localhost:9292>
 
 ###Screen shot 
 
-![Alt text](https://github.com/krishnau2/Stationery/blob/master/screenshot/Screenshot-1.jpg )
+![Alt text](https://github.com/krishnau2/Stationery/raw/master/screenshot/Screenshot-1.jpg )
 
